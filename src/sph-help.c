@@ -2,5 +2,7 @@
 
 int main(int argc, const char **argv)
 {
-    printf("hello world from init\n");
+    printf("Hello world from help!\n");
+
+    return 0;
 }

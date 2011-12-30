@@ -1,6 +1,6 @@
-#include <stdio.h>
+#include "sph-start.h"
 
-int main()
+int main(int argc, const char **argv)
 {
-    printf("hello, world\n");
+    printf("hello world from start\n");
 }

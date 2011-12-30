@@ -1,6 +1,7 @@
-#include <stdio.h>
+#include "sph-cli.h"
 
-int main()
+int main(int argc, const char **argv)
 {
-    printf("hello, world\n");
+    printf("hello world from cli\n");
 }
+

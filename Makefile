@@ -3,4 +3,6 @@
 default: all
 
 .DEFAULT:
-    cd src && $(MAKE) $@
+	cd src && $(MAKE) $@
+
+

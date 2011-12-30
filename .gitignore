@@ -1,3 +1,9 @@
 *.[oa]
 *~
 sph
+sph-cli
+sph-init
+sph-part
+sph-start
+sph-stop
+

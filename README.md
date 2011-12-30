@@ -1,20 +1,20 @@
 Sphere: A redis-like datastore for timed spherical dataset
 
-## Commands
+## Commandline Commands
 
+ * sph cli
  * sph init
- * sph up
- * sph downd
  * sph start
  * sph stop
  * sph part
 
-## CLI Commands
+## Client Commands
 
 ### Basic
 
  * all
  * coord INDEX
+ * type KEY
  * get COORD KEY
  * set COORD KEY VALUE
 
@@ -33,16 +33,4 @@ Sphere: A redis-like datastore for timed spherical dataset
 
  * div KEY1 KEY2
  * tdiv TIME KEY1 KEY2
-
-### Hidden commands
-
- * _rget INDEX KEY
- * _rset INDEX KEY VALUE
- * _nget INDEX KEY
- * _nget INDEX KEY VALUE
- * _rind COORD
- * _nind COORD
- * _rcoord INDEX
- * _ncoord INDEX
-
 

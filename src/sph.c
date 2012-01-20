@@ -7,7 +7,7 @@ int main(int argc, const char **argv)
     char** nargv = argv + 1;
     if (argc < 2) {
         return execv("sph-help", nargv);
-    } {
+    } else {
         const char* cmd = argv[1];
         if (strcmp(cmd, "cli") == 0)   return execv("sph-cli", nargv);
         if (strcmp(cmd, "help") == 0)  return execv("sph-help", nargv);

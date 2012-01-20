@@ -1,13 +1,18 @@
-#ifndef __SPHERE_H
-#define __SPHERE_H
+/*
+ * sphere.h
+ *
+ * The declarations for HEALPix implementation
+ *
+ * Wahlque Sphere Project
+ *
+ * MIT License
+ *
+ */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#ifndef SPHERE_H_
+#define SPHERE_H_
 
-/* Error codes */
-#define SPHERE_OK                0
-#define SPHERE_ERR               -1
+#include <string>
 
 /* Base paramenters for cell of tessellation */
 #define NTHETA                   3
@@ -44,27 +49,108 @@
 #define N12                      201326592
 #define N13                      805306368
 
-/*-----------------------------------------------------------------------------
- * Geometry structure of the HEALPix system
- *----------------------------------------------------------------------------*/
+namespace sphere {
 
-typedef struct node {
-
-} node;
-
-typedef struct ring {
-
-} ring;
-
-typedef struct grid {
+/* Kind */
+enum Kind {
+    S,   // scalar field on surface
+    ZS,  // scalar field on surface varying with z-axis
+    TS,  // scalar field on surface varying with time
+    TZS, // scalar field on surface varying with z-axis and time
+    V,   // vector field on surface
+    ZV,  // vector field on surface varying with z-axis
+    TV,  // vector field on surface varying with time
+    TZV  // vector field on surface varying with z-axis and time
 };
 
-/*-----------------------------------------------------------------------------
- * Data types
- *----------------------------------------------------------------------------*/
+class Vector {
+public:
+    double x;
+    double y;
+    double z;
+};
 
-/* A sphere object, that is a type able to hold a string / list / set */
+class Coord {
+public:
+    double longitude;
+    double latitude;
+};
 
+class Sphere;
+class Field;
+class ZField;
+class TField;
+class TZField;
 
+int* gen_by_rind(int level);
+int* gen_by_nind(int level, int parts...);
+int* gen_by_pind(int level);
+int** all_by_rind(int level);
+int** all_by_nind(int level, int parts...);
+int** all_by_pind(int level);
 
-#endif
+int* ring_by_nind(int level, int* index);
+int* ring_by_pind(int level, int* index);
+int* nind_by_rind(int level, int* index);
+int* nind_by_pind(int level, int* index);
+int* pind_by_rind(int level, int* index);
+int* pind_by_nind(int level, int* index);
+
+Kind kind(Sphere* sphere, std::string key);
+
+void cnst(Sphere* sphere, std::string key, double value);
+void zcnst(Sphere* sphere, double height, std::string key, double value);
+void tcnst(Sphere* sphere, double time, std::string key, double value);
+void tzcnst(Sphere* sphere, double time, double height, std::string key, double value);
+
+double get(Sphere* sphere, Coord coord, std::string key);
+void set(Sphere* sphere, Coord coord, std::string key, double value);
+double zget(Sphere* sphere, Coord coord, double height, std::string key);
+void zset(Sphere* sphere, Coord coord, double height, std::string key, double value);
+double tget(Sphere* sphere, Coord coord, double time, std::string key);
+void tset(Sphere* sphere, Coord coord, double time, std::string key, double value);
+double tzget(Sphere* sphere, Coord coord, double time, double height, std::string key);
+void tzset(Sphere* sphere, Coord coord, double time, double height, std::string key, double value);
+
+void zslc(Sphere* sphere, double height, std::string target, std::string source);
+void tslc(Sphere* sphere, double time, std::string target, std::string source);
+void tzslc(Sphere* sphere, double time, double height, std::string target, std::string source);
+
+void add(Sphere* sphere, std::string target, std::string sources...);
+void addt(Sphere* sphere, std::string target, std::string sources...);
+void exp(Sphere* sphere, std::string target, std::string source, double ratio);
+void expt(Sphere* sphere, std::string target, double ratio);
+void zadd(Sphere* sphere, double height, std::string target, std::string sources...);
+void zaddt(Sphere* sphere, double height, std::string target, std::string sources...);
+void zexp(Sphere* sphere, double height, std::string target, std::string source, double ratio);
+void zexpt(Sphere* sphere, double height, std::string target, double ratio);
+void tadd(Sphere* sphere, double time, std::string target, std::string sources...);
+void taddt(Sphere* sphere, double time, std::string target, std::string sources...);
+void texp(Sphere* sphere, double time, std::string target, std::string source, double ratio);
+void texpt(Sphere* sphere, double time, std::string target, double ratio);
+void tzadd(Sphere* sphere, double time, double height, std::string target, std::string sources...);
+void tzaddt(Sphere* sphere, double time, double height, std::string target, std::string sources...);
+void tzexp(Sphere* sphere, double time, double height, std::string target, std::string source, double ratio);
+void tzexpt(Sphere* sphere, double time, double height, std::string target, double ratio);
+
+void grad(Sphere* sphere, std::string target, std::string source);
+void div(Sphere* sphere, std::string target, std::string source);
+void rot(Sphere* sphere, std::string target, std::string source);
+void zgrad(Sphere* sphere, double height, std::string target, std::string source);
+void zdiv(Sphere* sphere, double height, std::string target, std::string source);
+void zrot(Sphere* sphere, double height, std::string target, std::string source);
+void tgrad(Sphere* sphere, double time, std::string target, std::string source);
+void tdiv(Sphere* sphere, double time, std::string target, std::string source);
+void trot(Sphere* sphere, double time, std::string target, std::string source);
+void tzgrad(Sphere* sphere, double time, double height, std::string target, std::string source);
+void tzdiv(Sphere* sphere, double time, double height, std::string target, std::string source);
+void tzrot(Sphere* sphere, double time, double height, std::string target, std::string source);
+
+double max(Sphere* sphere, std::string key);
+double min(Sphere* sphere, std::string key);
+double sum(Sphere* sphere, std::string key);
+double avg(Sphere* sphere, std::string key);
+
+}
+
+#endif /* SPHERE_H_ */

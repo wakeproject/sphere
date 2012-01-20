@@ -8,4 +8,4 @@ sph-part
 sph-start
 sph-stop
 
-test/*.cc
+sphere/test/*.cc

@@ -1,0 +1,11 @@
+import os.path as path
+
+env = Environment()
+
+bld = Builder(action = 'cxxtest/bin/cxxtestgen --template test/test_template.tpl --error-printer -o $TARGET $SOURCE')
+env.Append(BUILDERS = {'TestGen' : bld})
+
+env.TestGen('test_index.cc', 'test_index.h')
+
+Program('test_index.cc', CPPPATH=[path.abspath('..')])
+

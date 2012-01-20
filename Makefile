@@ -1,8 +1,10 @@
-# Top level makefile, the real shit is at src/Makefile
+# Top level makefile, the real target is at src/Makefile
 
-default: all
+default: src test
 
-.DEFAULT:
-	cd src && $(MAKE) $@
+src:
+		cd src && $(MAKE) all
 
+test:
+		cd test && $(MAKE) all
 

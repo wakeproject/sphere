@@ -3,7 +3,7 @@
 ##########################################################################
 
 INCL    = -I$(INCL_DIR)
-DEFS    = -D_DEBUG_ -W -Wall -std=c99 -pedantic -O2 $(COPT)
+DEFS    = -D_DEBUG_ -W -Wall -std=c++11 -pedantic -O2 $(COPT)
 CFLAGS  = -g $(INCL) $(DEFS)
 LFLAGS  = -L./ -ldl -pthread $(CFLAGS)
 

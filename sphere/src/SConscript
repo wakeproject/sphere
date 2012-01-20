@@ -1,0 +1,2 @@
+Program('sph.c');
+Object('sphere.c');

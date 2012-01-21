@@ -93,29 +93,29 @@ namespace sphere {
         return ring;
     }
 
-    int pinr_by_rind(int level, int index) {
-        int pinr = -1,
+    int pxir_by_rind(int level, int index) {
+        int pxir = -1,
             size = power(level),
             ncap = 2 * size * (size - 1),
             scap = 12 * size * size,
             ring = ring_by_rind(level, index);
 
         if (ring < 0) {
-            return pinr;
+            return pxir;
         } else if (ring <= size) {
-            pinr = index + 1 - 2 * ring * (ring - 1);
-            return pinr;
+            pxir = index + 1 - 2 * ring * (ring - 1);
+            return pxir;
         } else if (ring <= 3 * size) {
             index = index - ncap;
-            pinr = 1 + index % (4 * size);
-            return pinr;
+            pxir = 1 + index % (4 * size);
+            return pxir;
         } else if (ring < 4 * size) {
             int dual = 4 * size - ring;
-            pinr = 4 * dual - (scap - index - 1 - 2 * dual * (dual - 1));
-            return pinr;
+            pxir = 4 * dual - (scap - index - 1 - 2 * dual * (dual - 1));
+            return pxir;
         }
 
-        return pinr;
+        return pxir;
     }
 
 }

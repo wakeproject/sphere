@@ -9,3 +9,6 @@ sph-start
 sph-stop
 
 sphere/test/*.cc
+
+.sconsign.dblite
+*/.sconsign.dblite

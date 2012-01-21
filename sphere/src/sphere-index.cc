@@ -10,7 +10,7 @@
  */
 
 #include <math.h>
-#include "index.h"
+#include "sphere-index.h"
 
 namespace sphere {
 

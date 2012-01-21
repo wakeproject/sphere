@@ -1,4 +1,4 @@
-#include "src/index.h"
+#include "src/sphere-index.h"
 #include <cxxtest/TestSuite.h>
 
 using namespace sphere;

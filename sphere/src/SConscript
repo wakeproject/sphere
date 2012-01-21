@@ -1,2 +1,2 @@
 Program('sph.c', CPPPATH='..')
-Object('index.cc', CPPPATH='..')
+Object('sphere-index.cc', CPPPATH='..')

@@ -9,5 +9,5 @@ cxxtest = imp.load_source('cxxtest', cxxtestbuilder_path)
 env = Environment()
 
 cxxtest.generate(env, CXXTEST_INSTALL_DIR = cxxtest_path)
-env.CxxTest('test_index', ['test_index.h', '../src/index.o'])
+env.CxxTest('test_index', ['test_index.h', '../src/sphere-index.o'])
 

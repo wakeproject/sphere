@@ -1,11 +1,13 @@
 import os.path as path
+import imp
+
+cxxtestbuilder_path = '../../cxxtest/build_tools/SCons/cxxtest.py'
+cxxtest_path = '../../cxxtest/'
+
+cxxtest = imp.load_source('cxxtest', cxxtestbuilder_path)
 
 env = Environment()
 
-bld = Builder(action = 'cxxtest/bin/cxxtestgen --template test/test_template.tpl --error-printer -o $TARGET $SOURCE')
-env.Append(BUILDERS = {'TestGen' : bld})
-
-env.TestGen('test_index.cc', 'test_index.h')
-
-Program('test_index.cc', CPPPATH=[path.abspath('..')])
+cxxtest.generate(env, CXXTEST_INSTALL_DIR = cxxtest_path)
+env.CxxTest('test_index', ['test_index.h', '../src/index.o'])
 

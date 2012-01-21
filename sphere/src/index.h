@@ -19,13 +19,14 @@
 /* Numbers of power 2 */
 #define P0                       1
 #define P1                       2
-#define P3                       4
-#define P4                       8
-#define P5                       16
-#define P6                       32
-#define P7                       64
-#define P8                       128
-#define P9                       256
+#define P2                       4
+#define P3                       8
+#define P4                       16
+#define P5                       32
+#define P6                       64
+#define P7                       128
+#define P8                       256
+#define P9                       512
 #define P10                      1024
 #define P11                      2048
 #define P12                      4096
@@ -49,21 +50,16 @@
 
 namespace sphere {
 
-int scale(int level);
+int all(int level);
 
-int* gen_by_rind(int level);
-int* gen_by_nind(int level, int parts...);
-int* gen_by_pind(int level);
-int** all_by_rind(int level);
-int** all_by_nind(int level, int parts...);
-int** all_by_pind(int level);
+int ring_by_rind(int level, int index);
+int pinr_by_rind(int level, int index);
 
-int* ring_by_nind(int level, int* index);
-int* ring_by_pind(int level, int* index);
-int* nind_by_rind(int level, int* index);
-int* nind_by_pind(int level, int* index);
-int* pind_by_rind(int level, int* index);
-int* pind_by_nind(int level, int* index);
+int rind_by_nind(int level, int index);
+int nind_by_rind(int level, int index);
+
+int nind_by_path(int level, int* path);
+int* path_by_nind(int level, int index);
 
 }
 

@@ -50,16 +50,17 @@
 
 namespace sphere {
 
-int all(int level);
+    int power(int level);
+    int all(int level);
 
-int ring_by_rind(int level, int index);
-int pxir_by_rind(int level, int index);
+    int ring_by_rind(int level, int index);
+    int pxir_by_rind(int level, int index);
 
-int rind_by_nind(int level, int index);
-int nind_by_rind(int level, int index);
+    int rind_by_nind(int level, int index);
+    int nind_by_rind(int level, int index);
 
-int nind_by_path(int level, int* path);
-int* path_by_nind(int level, int index);
+    int nind_by_path(int level, int* path);
+    int* path_by_nind(int level, int index);
 
 }
 

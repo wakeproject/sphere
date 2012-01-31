@@ -66,5 +66,91 @@ namespace sphere {
     }
     */
 
+    const ScalarField ScalarField::operator+(const ScalarField &other) const {
+        if(this->level != other.level)
+            throw "granularity of the two fields is mismatched!";
+
+        ScalarField* field = new ScalarField(this->level);
+        for(int i = 0, len = all(this->level); i < len; i++) {
+            (*field)[i] = (*this)[i] + other[i];
+        }
+
+        return (*field);
+    }
+
+    const ScalarField ScalarField::operator-(const ScalarField &other) const {
+        if(this->level != other.level)
+            throw "granularity of the two fields is mismatched!";
+
+        ScalarField* field = new ScalarField(this->level);
+        for(int i = 0, len = all(this->level); i < len; i++) {
+            (*field)[i] = (*this)[i] - other[i];
+        }
+
+        return (*field);
+    }
+
+    const ScalarField ScalarField::operator*(const double cnst) const {
+        ScalarField* field = new ScalarField(this->level);
+        for(int i = 0, len = all(this->level); i < len; i++) {
+            (*field)[i] = (*this)[i] * cnst;
+        }
+
+        return (*field);
+    }
+
+    const ScalarField ScalarField::operator/(const double cnst) const {
+        if(cnst == 0)
+            throw "divided by zero!";
+
+        ScalarField* field = new ScalarField(this->level);
+        for(int i = 0, len = all(this->level); i < len; i++) {
+            (*field)[i] = (*this)[i] / cnst;
+        }
+
+        return (*field);
+    }
+
+    ScalarField& ScalarField::operator+=(const ScalarField &rhs) {
+        if(this->level != rhs.level)
+            throw "granularity of the two fields is mismatched!";
+
+        for(int i = 0, len = all(this->level); i < len; i++) {
+            (*this)[i] = (*this)[i] + rhs[i];
+        }
+
+        return (*this);
+    }
+
+    ScalarField& ScalarField::operator-=(const ScalarField &rhs) {
+        if(this->level != rhs.level)
+            throw "granularity of the two fields is mismatched!";
+
+        for(int i = 0, len = all(this->level); i < len; i++) {
+            (*this)[i] = (*this)[i] - rhs[i];
+        }
+
+        return (*this);
+    }
+
+    ScalarField& ScalarField::operator*=(const double &cnst) {
+        for(int i = 0, len = all(this->level); i < len; i++) {
+            (*this)[i] = (*this)[i] * cnst;
+        }
+
+        return (*this);
+    }
+
+    ScalarField& ScalarField::operator/=(const double &cnst) {
+        if(cnst == 0)
+            throw "divided by zero!";
+
+        for(int i = 0, len = all(this->level); i < len; i++) {
+            (*this)[i] = (*this)[i] / cnst;
+        }
+
+        return (*this);
+    }
+
 }
 

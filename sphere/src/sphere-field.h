@@ -41,6 +41,22 @@ namespace sphere {
         proxy operator[](int index);
 
         //double operator()(double lng, double lat);
+
+        const ScalarField operator+(const ScalarField &other) const;
+
+        const ScalarField operator-(const ScalarField &other) const;
+
+        const ScalarField operator*(const double cnst) const;
+
+        const ScalarField operator/(const double cnst) const;
+
+        ScalarField& operator+=(const ScalarField &rhs);
+
+        ScalarField& operator-=(const ScalarField &rhs);
+
+        ScalarField& operator*=(const double &cnst);
+
+        ScalarField& operator/=(const double &cnst);
     private:
         int level;
         int size;

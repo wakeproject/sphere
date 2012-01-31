@@ -70,45 +70,45 @@ namespace sphere {
         if(this->level != other.level)
             throw "granularity of the two fields is mismatched!";
 
-        ScalarField* field = new ScalarField(this->level);
+        ScalarField field = ScalarField(this->level);
         for(int i = 0, len = all(this->level); i < len; i++) {
-            (*field)[i] = (*this)[i] + other[i];
+            field[i] = (*this)[i] + other[i];
         }
 
-        return (*field);
+        return field;
     }
 
     const ScalarField ScalarField::operator-(const ScalarField &other) const {
         if(this->level != other.level)
             throw "granularity of the two fields is mismatched!";
 
-        ScalarField* field = new ScalarField(this->level);
+        ScalarField field = ScalarField(this->level);
         for(int i = 0, len = all(this->level); i < len; i++) {
-            (*field)[i] = (*this)[i] - other[i];
+            field[i] = (*this)[i] - other[i];
         }
 
-        return (*field);
+        return field;
     }
 
     const ScalarField ScalarField::operator*(const double cnst) const {
-        ScalarField* field = new ScalarField(this->level);
+        ScalarField field = ScalarField(this->level);
         for(int i = 0, len = all(this->level); i < len; i++) {
-            (*field)[i] = (*this)[i] * cnst;
+            field[i] = (*this)[i] * cnst;
         }
 
-        return (*field);
+        return field;
     }
 
     const ScalarField ScalarField::operator/(const double cnst) const {
         if(cnst == 0)
             throw "divided by zero!";
 
-        ScalarField* field = new ScalarField(this->level);
+        ScalarField field = ScalarField(this->level);
         for(int i = 0, len = all(this->level); i < len; i++) {
-            (*field)[i] = (*this)[i] / cnst;
+            field[i] = (*this)[i] / cnst;
         }
 
-        return (*field);
+        return field;
     }
 
     ScalarField& ScalarField::operator+=(const ScalarField &rhs) {

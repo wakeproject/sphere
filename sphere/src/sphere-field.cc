@@ -66,51 +66,6 @@ namespace sphere {
     }
     */
 
-    const ScalarField ScalarField::operator+(const ScalarField &other) const {
-        if(this->level != other.level)
-            throw "granularity of the two fields is mismatched!";
-
-        ScalarField field = ScalarField(this->level);
-        for(int i = 0, len = all(this->level); i < len; i++) {
-            field[i] = (*this)[i] + other[i];
-        }
-
-        return field;
-    }
-
-    const ScalarField ScalarField::operator-(const ScalarField &other) const {
-        if(this->level != other.level)
-            throw "granularity of the two fields is mismatched!";
-
-        ScalarField field = ScalarField(this->level);
-        for(int i = 0, len = all(this->level); i < len; i++) {
-            field[i] = (*this)[i] - other[i];
-        }
-
-        return field;
-    }
-
-    const ScalarField ScalarField::operator*(const double cnst) const {
-        ScalarField field = ScalarField(this->level);
-        for(int i = 0, len = all(this->level); i < len; i++) {
-            field[i] = (*this)[i] * cnst;
-        }
-
-        return field;
-    }
-
-    const ScalarField ScalarField::operator/(const double cnst) const {
-        if(cnst == 0)
-            throw "divided by zero!";
-
-        ScalarField field = ScalarField(this->level);
-        for(int i = 0, len = all(this->level); i < len; i++) {
-            field[i] = (*this)[i] / cnst;
-        }
-
-        return field;
-    }
-
     ScalarField& ScalarField::operator+=(const ScalarField &rhs) {
         if(this->level != rhs.level)
             throw "granularity of the two fields is mismatched!";

@@ -1,4 +1,5 @@
 Program('sph.c', CPPPATH='..')
 Object('sphere-index.cc', CPPPATH='..')
 Object('sphere-geoind.cc', CPPPATH='..')
+Object('sphere-type.cc', CPPPATH='..')
 Object('sphere-field.cc', CPPPATH='..')

@@ -30,6 +30,12 @@ namespace sphere {
         double x;
         double y;
         double z;
+        Vector(double x=0, double y=0, double z=0);
+        static Vector* ZERO;
+        Vector& operator+=(const Vector &rhs);
+        Vector& operator-=(const Vector &rhs);
+        Vector& operator*=(const double &cnst);
+        Vector& operator/=(const double &cnst);
     };
 
     class Coord {

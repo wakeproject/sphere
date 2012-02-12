@@ -10,5 +10,5 @@ env = Environment()
 
 cxxtest.generate(env, CXXTEST_INSTALL_DIR = cxxtest_path)
 env.CxxTest('test_index', ['test_index.h', '../src/sphere-index.o'])
-env.CxxTest('test_field', ['test_field.h', '../src/sphere-index.o', '../src/sphere-geoind.o', '../src/sphere-field.o'])
+env.CxxTest('test_field', ['test_field.h', '../src/sphere-index.o', '../src/sphere-geoind.o', '../src/sphere-type.o', '../src/sphere-field.o'])
 

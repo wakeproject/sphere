@@ -185,5 +185,59 @@ namespace sphere {
         return (*this);
     }
 
+    ScalarZField::ScalarZField(int level, const ScalarZ cnst) : Field<ScalarZ> (level, cnst) {
+    }
+
+    ScalarZField::ScalarZField(const Field<ScalarZ>& orignal) : Field<ScalarZ> (orignal) {
+    }
+
+    ScalarZField::~ScalarZField() {
+    }
+
+    const Field<ScalarZ>::proxy ScalarZField::operator[](int index) const {
+        return (*((Field<ScalarZ>*) this))[index];
+    }
+
+    Field<ScalarZ>::proxy ScalarZField::operator[](int index) {
+        return (*((Field<ScalarZ>*) this))[index];
+    }
+
+    ScalarZField& ScalarZField::operator+=(const ScalarZField &rhs) {
+        (*((Field<ScalarZ>*) this)) += rhs;
+        return (*this);
+    }
+
+    ScalarZField& ScalarZField::operator-=(const ScalarZField &rhs) {
+        (*((Field<ScalarZ>*) this)) -= rhs;
+        return (*this);
+    }
+
+    VectorZField::VectorZField(int level, const VectorZ cnst) : Field<VectorZ> (level, cnst) {
+    }
+
+    VectorZField::VectorZField(const Field<VectorZ>& orignal) : Field<VectorZ> (orignal) {
+    }
+
+    VectorZField::~VectorZField() {
+    }
+
+    const Field<VectorZ>::proxy VectorZField::operator[](int index) const {
+        return (*((Field<VectorZ>*) this))[index];
+    }
+
+    Field<VectorZ>::proxy VectorZField::operator[](int index) {
+        return (*((Field<VectorZ>*) this))[index];
+    }
+
+    VectorZField& VectorZField::operator+=(const VectorZField &rhs) {
+        (*((Field<VectorZ>*) this)) += rhs;
+        return (*this);
+    }
+
+    VectorZField& VectorZField::operator-=(const VectorZField &rhs) {
+        (*((Field<VectorZ>*) this)) -= rhs;
+        return (*this);
+    }
+
 }
 

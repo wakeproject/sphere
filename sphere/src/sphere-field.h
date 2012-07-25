@@ -12,7 +12,6 @@
 #ifndef FIELD_H_
 #define FIELD_H_
 
-#include <cstddef>
 #include "sphere-type.h"
 
 namespace sphere {
@@ -78,6 +77,28 @@ namespace sphere {
         Field<Vector>::proxy operator[](int index);
         VectorField& operator+=(const VectorField &rhs);
         VectorField& operator-=(const VectorField &rhs);
+   };
+
+    class ScalarZField : public Field<ScalarZ> {
+    public:
+        ScalarZField(int level, const ScalarZ cnst);
+        ScalarZField(const Field<ScalarZ>& orignal);
+        ~ScalarZField();
+        const Field<ScalarZ>::proxy operator[](int index) const;
+        Field<ScalarZ>::proxy operator[](int index);
+        ScalarZField& operator+=(const ScalarZField &rhs);
+        ScalarZField& operator-=(const ScalarZField &rhs);
+    };
+
+    class VectorZField : public Field<VectorZ> {
+    public:
+        VectorZField(int level, const VectorZ cnst);
+        VectorZField(const Field<VectorZ>& orignal);
+        ~VectorZField();
+        const Field<VectorZ>::proxy operator[](int index) const;
+        Field<VectorZ>::proxy operator[](int index);
+        VectorZField& operator+=(const VectorZField &rhs);
+        VectorZField& operator-=(const VectorZField &rhs);
    };
 }
 

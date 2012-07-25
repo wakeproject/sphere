@@ -16,31 +16,6 @@
 
 namespace sphere {
 
-/* Kind */
-enum Kind {
-    S,   // scalar field on surface
-    ZS,  // scalar field on surface varying with z-axis
-    TS,  // scalar field on surface varying with time
-    TZS, // scalar field on surface varying with z-axis and time
-    V,   // vector field on surface
-    ZV,  // vector field on surface varying with z-axis
-    TV,  // vector field on surface varying with time
-    TZV  // vector field on surface varying with z-axis and time
-};
-
-class Vector {
-public:
-    double x;
-    double y;
-    double z;
-};
-
-class Coord {
-public:
-    double longitude;
-    double latitude;
-};
-
 class Sphere;
 class Field;
 class ZField;

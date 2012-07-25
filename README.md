@@ -9,7 +9,7 @@ It is an implementation of HEALPix from JPL, NASA.
 Please refer the article below for details of HEALPix:
 
  * HEALPix — a Framework for High Resolution Discretization, and Fast Analysis of Data Distributed on the Sphere
- * By K. M. G ́rski et. al.
+ * By K. M. Gorski et. al.
  * http://arxiv.org/abs/astro-ph/0409513
 
 The project is just at the beginning, and is not ready for use.

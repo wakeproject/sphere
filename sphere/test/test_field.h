@@ -1,3 +1,4 @@
+#include "src/sphere-type.h"
 #include "src/sphere-field.h"
 #include <cxxtest/TestSuite.h>
 
@@ -9,24 +10,24 @@ class SuiteField : public CxxTest::TestSuite
 public:
     void test_scalar_constructor(void)
     {
-        ScalarField field = ScalarField(0, 1);
-        TS_ASSERT_EQUALS(field[0], 1);
-        TS_ASSERT_EQUALS(field[1], 1);
-        TS_ASSERT_EQUALS(field[2], 1);
-        TS_ASSERT_EQUALS(field[3], 1);
-        TS_ASSERT_EQUALS(field[4], 1);
-        TS_ASSERT_EQUALS(field[5], 1);
-        TS_ASSERT_EQUALS(field[6], 1);
-        TS_ASSERT_EQUALS(field[7], 1);
-        TS_ASSERT_EQUALS(field[8], 1);
-        TS_ASSERT_EQUALS(field[9], 1);
-        TS_ASSERT_EQUALS(field[10], 1);
-        TS_ASSERT_EQUALS(field[11], 1);
+        ScalarField field(0, 1.0);
+        TS_ASSERT_EQUALS(field[0], 1.0);
+        TS_ASSERT_EQUALS(field[1], 1.0);
+        TS_ASSERT_EQUALS(field[2], 1.0);
+        TS_ASSERT_EQUALS(field[3], 1.0);
+        TS_ASSERT_EQUALS(field[4], 1.0);
+        TS_ASSERT_EQUALS(field[5], 1.0);
+        TS_ASSERT_EQUALS(field[6], 1.0);
+        TS_ASSERT_EQUALS(field[7], 1.0);
+        TS_ASSERT_EQUALS(field[8], 1.0);
+        TS_ASSERT_EQUALS(field[9], 1.0);
+        TS_ASSERT_EQUALS(field[10], 1.0);
+        TS_ASSERT_EQUALS(field[11], 1.0);
     }
 
     void test_scalar_bracket_lhs(void)
     {
-        ScalarField field = ScalarField(0, 1);
+        ScalarField field(0, 1.0);
         field[3] = 3;
         field[6] = 6;
         field[9] = 9;
@@ -46,8 +47,8 @@ public:
 
     void test_scalar_assignment(void)
     {
-        ScalarField field1 = ScalarField(0, 1);
-        ScalarField field2 = ScalarField(0, 2);
+        ScalarField field1(0, 1.0);
+        ScalarField field2(0, 2.0);
         field1 = field2;
         field1[3] = 3;
         field1[6] = 6;
@@ -80,8 +81,8 @@ public:
 
     void test_scalar_add(void)
     {
-        ScalarField field = ScalarField(0, 1);
-        ScalarField field1 = ScalarField(0, 2);
+        ScalarField field(0, 1.0);
+        ScalarField field1(0, 2.0);
         field += field1;
         TS_ASSERT_EQUALS(field[0], 3);
         TS_ASSERT_EQUALS(field[1], 3);
@@ -99,8 +100,8 @@ public:
 
     void test_scalar_minus(void)
     {
-        ScalarField field = ScalarField(0, 5);
-        ScalarField field1 = ScalarField(0, 2);
+        ScalarField field(0, 5.0);
+        ScalarField field1(0, 2.0);
         field -= field1;
         TS_ASSERT_EQUALS(field[0], 3);
         TS_ASSERT_EQUALS(field[1], 3);
@@ -118,7 +119,7 @@ public:
 
     void test_scalar_product(void)
     {
-        ScalarField field = ScalarField(0, 1);
+        ScalarField field(0, 1.0);
         field *= 3;
         TS_ASSERT_EQUALS(field[0], 3);
         TS_ASSERT_EQUALS(field[1], 3);
@@ -136,7 +137,7 @@ public:
 
     void test_scalar_divid(void)
     {
-        ScalarField field = ScalarField(0, 6);
+        ScalarField field(0, 6.0);
         field /= 2;
         TS_ASSERT_EQUALS(field[0], 3);
         TS_ASSERT_EQUALS(field[1], 3);
@@ -154,8 +155,8 @@ public:
 
     void test_vector_add(void)
     {
-        VectorField field = VectorField(0, new Vector(1,1,1));
-        VectorField field1 = VectorField(0, new Vector(2,2,2));
+        VectorField field(0, Vector(1,1,1));
+        VectorField field1(0, Vector(2,2,2));
         field += field1;
         Vector vect = field[0];
         TS_ASSERT_EQUALS(vect.x, 3);
@@ -209,8 +210,8 @@ public:
 
     void test_vector_minus(void)
     {
-        VectorField field = VectorField(0, new Vector(5, 5, 5));
-        VectorField field1 = VectorField(0, new Vector(2, 2, 2));
+        VectorField field(0, Vector(5, 5, 5));
+        VectorField field1(0, Vector(2, 2, 2));
         field -= field1;
         Vector vect = field[0];
         TS_ASSERT_EQUALS(vect.x, 3);
@@ -264,7 +265,7 @@ public:
 
     void test_vector_product(void)
     {
-        VectorField field = VectorField(0, new Vector(1, 1, 1));
+        VectorField field(0, Vector(1, 1, 1));
         field *= 3;
         Vector vect = field[0];
         TS_ASSERT_EQUALS(vect.x, 3);
@@ -318,7 +319,7 @@ public:
 
     void test_vector_divid(void)
     {
-        VectorField field = VectorField(0, new Vector(6, 6, 6));
+        VectorField field(0, Vector(6, 6, 6));
         field /= 2;
         Vector vect = field[0];
         TS_ASSERT_EQUALS(vect.x, 3);

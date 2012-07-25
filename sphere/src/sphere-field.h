@@ -17,84 +17,68 @@
 
 namespace sphere {
 
-    class ScalarField {
+    template <typename T> class Field {
     public:
-        ScalarField(int level, double cnst=0);
+        Field(int level, const T cnst);
+        Field(const Field<T>& orignal);
+        ~Field();
+
+        struct proxy {
+            T& element;
+
+            proxy(T& el) : element(el) {}
+
+            operator const T& () const {
+                return element; // For use on RHS of assignment
+            };
+
+            proxy& operator=(const T &rhs) {
+                element = rhs; // For use on LHS of assignment
+            };
+        };
+
+        const proxy operator[](int index) const;
+
+        proxy operator[](int index);
+
+        virtual Field<T>& operator=(const Field<T> &rhs);
+
+        virtual Field<T>& operator+=(const Field<T> &rhs);
+
+        virtual Field<T>& operator-=(const Field<T> &rhs);
+
+        virtual Field<T>& operator*=(const double &cnst);
+
+        virtual Field<T>& operator/=(const double &cnst);
+
+        //T operator()(double lng, double lat);
+
+        int level;
+        int size;
+        T* data;
+    };
+
+    class ScalarField : public Field<double> {
+    public:
+        ScalarField(int level, const double cnst);
+        ScalarField(const Field<double>& orignal);
         ~ScalarField();
-        ScalarField & operator=(const ScalarField &rhs);
-
-        struct proxy {
-            double& element;
-
-            proxy(double& el) : element(el) {}
-
-            operator const double& () const {
-                return element; // For use on RHS of assignment
-            }
-
-            proxy& operator=(const double& rhs) {
-                element = rhs; // For use on LHS of assignment
-            }
-        };
-
-        const proxy operator[](int index) const;
-
-        proxy operator[](int index);
-
-        //double operator()(double lng, double lat);
-
+        const Field<double>::proxy operator[](int index) const;
+        Field<double>::proxy operator[](int index);
         ScalarField& operator+=(const ScalarField &rhs);
-
         ScalarField& operator-=(const ScalarField &rhs);
-
-        ScalarField& operator*=(const double &cnst);
-
-        ScalarField& operator/=(const double &cnst);
-    private:
-        int level;
-        int size;
-        double* data;
     };
 
-    class VectorField {
+    class VectorField : public Field<Vector> {
     public:
-        VectorField(int level, Vector* cnst=Vector::ZERO);
+        VectorField(int level, const Vector cnst);
+        VectorField(const Field<Vector>& orignal);
         ~VectorField();
-        VectorField & operator=(const VectorField &rhs);
-
-        struct proxy {
-            Vector& element;
-
-            proxy(Vector& el) : element(el) {}
-
-            operator const Vector& () const {
-                return element; // For use on RHS of assignment
-            }
-
-            proxy& operator=(const Vector& rhs) {
-                element = rhs; // For use on LHS of assignment
-            }
-        };
-
-        const proxy operator[](int index) const;
-
-        proxy operator[](int index);
-
-        //Vector operator()(double lng, double lat);
-
+        const Field<Vector>::proxy operator[](int index) const;
+        Field<Vector>::proxy operator[](int index);
         VectorField& operator+=(const VectorField &rhs);
-
         VectorField& operator-=(const VectorField &rhs);
-
-        VectorField& operator*=(const double &cnst);
-
-        VectorField& operator/=(const double &cnst);
-    private:
-        int level;
-        int size;
-        Vector* data;
-    };
-
+   };
 }
 
 #endif /* FIELD_H_ */

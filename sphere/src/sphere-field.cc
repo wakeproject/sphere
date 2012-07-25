@@ -239,5 +239,113 @@ namespace sphere {
         return (*this);
     }
 
+    ScalarTField::ScalarTField(int level, const ScalarT cnst) : Field<ScalarT> (level, cnst) {
+    }
+
+    ScalarTField::ScalarTField(const Field<ScalarT>& orignal) : Field<ScalarT> (orignal) {
+    }
+
+    ScalarTField::~ScalarTField() {
+    }
+
+    const Field<ScalarT>::proxy ScalarTField::operator[](int index) const {
+        return (*((Field<ScalarT>*) this))[index];
+    }
+
+    Field<ScalarT>::proxy ScalarTField::operator[](int index) {
+        return (*((Field<ScalarT>*) this))[index];
+    }
+
+    ScalarTField& ScalarTField::operator+=(const ScalarTField &rhs) {
+        (*((Field<ScalarT>*) this)) += rhs;
+        return (*this);
+    }
+
+    ScalarTField& ScalarTField::operator-=(const ScalarTField &rhs) {
+        (*((Field<ScalarT>*) this)) -= rhs;
+        return (*this);
+    }
+
+    VectorTField::VectorTField(int level, const VectorT cnst) : Field<VectorT> (level, cnst) {
+    }
+
+    VectorTField::VectorTField(const Field<VectorT>& orignal) : Field<VectorT> (orignal) {
+    }
+
+    VectorTField::~VectorTField() {
+    }
+
+    const Field<VectorT>::proxy VectorTField::operator[](int index) const {
+        return (*((Field<VectorT>*) this))[index];
+    }
+
+    Field<VectorT>::proxy VectorTField::operator[](int index) {
+        return (*((Field<VectorT>*) this))[index];
+    }
+
+    VectorTField& VectorTField::operator+=(const VectorTField &rhs) {
+        (*((Field<VectorT>*) this)) += rhs;
+        return (*this);
+    }
+
+    VectorTField& VectorTField::operator-=(const VectorTField &rhs) {
+        (*((Field<VectorT>*) this)) -= rhs;
+        return (*this);
+    }
+
+    ScalarTZField::ScalarTZField(int level, const ScalarTZ cnst) : Field<ScalarTZ> (level, cnst) {
+    }
+
+    ScalarTZField::ScalarTZField(const Field<ScalarTZ>& orignal) : Field<ScalarTZ> (orignal) {
+    }
+
+    ScalarTZField::~ScalarTZField() {
+    }
+
+    const Field<ScalarTZ>::proxy ScalarTZField::operator[](int index) const {
+        return (*((Field<ScalarTZ>*) this))[index];
+    }
+
+    Field<ScalarTZ>::proxy ScalarTZField::operator[](int index) {
+        return (*((Field<ScalarTZ>*) this))[index];
+    }
+
+    ScalarTZField& ScalarTZField::operator+=(const ScalarTZField &rhs) {
+        (*((Field<ScalarTZ>*) this)) += rhs;
+        return (*this);
+    }
+
+    ScalarTZField& ScalarTZField::operator-=(const ScalarTZField &rhs) {
+        (*((Field<ScalarTZ>*) this)) -= rhs;
+        return (*this);
+    }
+
+    VectorTZField::VectorTZField(int level, const VectorTZ cnst) : Field<VectorTZ> (level, cnst) {
+    }
+
+    VectorTZField::VectorTZField(const Field<VectorTZ>& orignal) : Field<VectorTZ> (orignal) {
+    }
+
+    VectorTZField::~VectorTZField() {
+    }
+
+    const Field<VectorTZ>::proxy VectorTZField::operator[](int index) const {
+        return (*((Field<VectorTZ>*) this))[index];
+    }
+
+    Field<VectorTZ>::proxy VectorTZField::operator[](int index) {
+        return (*((Field<VectorTZ>*) this))[index];
+    }
+
+    VectorTZField& VectorTZField::operator+=(const VectorTZField &rhs) {
+        (*((Field<VectorTZ>*) this)) += rhs;
+        return (*this);
+    }
+
+    VectorTZField& VectorTZField::operator-=(const VectorTZField &rhs) {
+        (*((Field<VectorTZ>*) this)) -= rhs;
+        return (*this);
+    }
+
 }
 

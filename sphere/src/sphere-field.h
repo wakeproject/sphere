@@ -100,6 +100,50 @@ namespace sphere {
         VectorZField& operator+=(const VectorZField &rhs);
         VectorZField& operator-=(const VectorZField &rhs);
    };
+
+    class ScalarTField : public Field<ScalarT> {
+    public:
+        ScalarTField(int level, const ScalarT cnst);
+        ScalarTField(const Field<ScalarT>& orignal);
+        ~ScalarTField();
+        const Field<ScalarT>::proxy operator[](int index) const;
+        Field<ScalarT>::proxy operator[](int index);
+        ScalarTField& operator+=(const ScalarTField &rhs);
+        ScalarTField& operator-=(const ScalarTField &rhs);
+    };
+
+    class VectorTField : public Field<VectorT> {
+    public:
+        VectorTField(int level, const VectorT cnst);
+        VectorTField(const Field<VectorT>& orignal);
+        ~VectorTField();
+        const Field<VectorT>::proxy operator[](int index) const;
+        Field<VectorT>::proxy operator[](int index);
+        VectorTField& operator+=(const VectorTField &rhs);
+        VectorTField& operator-=(const VectorTField &rhs);
+   };
+
+    class ScalarTZField : public Field<ScalarTZ> {
+    public:
+        ScalarTZField(int level, const ScalarTZ cnst);
+        ScalarTZField(const Field<ScalarTZ>& orignal);
+        ~ScalarTZField();
+        const Field<ScalarTZ>::proxy operator[](int index) const;
+        Field<ScalarTZ>::proxy operator[](int index);
+        ScalarTZField& operator+=(const ScalarTZField &rhs);
+        ScalarTZField& operator-=(const ScalarTZField &rhs);
+    };
+
+    class VectorTZField : public Field<VectorTZ> {
+    public:
+        VectorTZField(int level, const VectorTZ cnst);
+        VectorTZField(const Field<VectorTZ>& orignal);
+        ~VectorTZField();
+        const Field<VectorTZ>::proxy operator[](int index) const;
+        Field<VectorTZ>::proxy operator[](int index);
+        VectorTZField& operator+=(const VectorTZField &rhs);
+        VectorTZField& operator-=(const VectorTZField &rhs);
+   };
 }
 
 #endif /* FIELD_H_ */
